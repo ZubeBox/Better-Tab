@@ -10,4 +10,6 @@ Better Tab is open source, which means you can inspect the source code and edit 
 
 ## How To Install
 
-You can use `git clone` to install Better Tab, for example: `git clone`
+You can use `git clone` to install Better Tab, for example: `git clone https://github.com/ZubeBox/Better-Tab`, or you can simply download the .ZIP file.
+
+Once you've installed the files, set the `index.html` file to the default homepage and/or new tab.
