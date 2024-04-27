@@ -8,6 +8,8 @@ Better Tab is a new tab page which offers customization for all browser users un
 
 Better Tab is open source, which means you can inspect the source code and edit it any way you'd like.
 
+You may fork this repository anyway you like.
+
 ## How To Install
 
 You can use `git clone` to install Better Tab, for example, you type: `git clone https://github.com/ZubeBox/Better-Tab` in the terminal, or you can simply download the .ZIP file.
