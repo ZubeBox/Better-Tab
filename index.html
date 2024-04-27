@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+	    <title>New Tab</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="googlefonts/googlefontsicons.css" />
+        <script type="module" src="settings/settings.js"></script>
+    </head>
+    <body class="body">
+
+        <div id="Menu"></div>
+
+        <div class="explorer" id="explorer">
+            <div class="starticonwrapper" onclick="OpenMenu()"><img src="images/icons/taskbar/start/browsers/braveicon.ico" id="starticon" class="starticon"></div>
+            <div class="gap-right-explorer"></div>
+            <div class="moreappswrapper"><img src="images/icons/taskbar/icons/darkmoreapps.ico" class="taskbaricons moreapps"></div>
+            <div class="soundwrapper"><img src="images/icons/taskbar/icons/darksound.ico" class="soundicon"></div>
+            <div class="time-container" id="time-container">
+                <p class="text time" id="time"></p><br><p class="text date" id="date"></p>
+            </div>
+        </div>
+
+        <script id="json">
+
+[{settings: {
+        startmenu: {
+            bookmarks: {
+                differentbookmarks: {
+                    1: {
+                        icon: "./images/icons/youtubeicon.png",
+                        name: "Youtube",
+                        webname: "https://www.youtube.com",
+                        nickname: "Youtube"
+                    },
+                    2: {
+                        icon: "./images/icons/vscodeicon.png",
+                        name: "Visual Studio Code",
+                        webname: "https://vscode.dev",
+                        nickname: "VSCode"
+                    }
+                },
+                bookmarksettings: {
+                    btextcolor: "rgba(255, 255, 255, 1)"
+                }
+            },
+            mainstartmenu: {
+                feel: {
+                    borderradius: "20px",
+                    layout: "regular",
+                    background: "#333",
+                    textcolor: "rgba(255, 255, 255, 1)"
+                }
+            }
+        },
+        mainsettings: {
+            starticon: "images/icons/start/browsers/chromeicon.png",
+            theme: "dark_mode",
+            background: "#333",
+            name:"BLANK",
+        }
+    }
+}]
+
+        </script>
+
+        <script>
+
+
+const HOURS = [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+            ]
+
+            const DAYS = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednsday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+            ]
+
+            const MONTHS = [
+                "January",
+                "Febuary",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+            ]
+
+            setInterval(() => {
+
+                let date = new Date()
+
+                let current_year = date.getFullYear();
+                let current_month = date.getMonth();
+                let current_date = date.getDate();
+                let current_day = date.getDay();
+                let current_hour = date.getHours();
+                let current_minutes = date.getMinutes();
+                let current_seconds = date.getSeconds();
+                let current_milliseconds = date.getMilliseconds();
+                let st_nd_rd_th = '';
+
+                if(current_hour == 12){
+                    ampm = 'PM'
+                }
+                if(current_hour > 12){
+                    ampm = 'PM'
+                }
+                if(current_hour < 12){
+                    ampm = 'AM'
+                }
+                if(current_hour == 24){
+                    ampm = 'AM'
+                }
+                if(current_minutes < 10){
+                    current_minutes = "0" + current_minutes
+                }
+                if(current_seconds < 10){
+                    current_seconds = "0" + current_seconds
+                }
+                if(current_milliseconds < 1000){
+                    current_milliseconds = "0" + current_milliseconds
+                }
+                if(current_milliseconds < 100){
+                    current_milliseconds = "0" + current_milliseconds
+                }
+                if(current_milliseconds < 10){
+                    current_milliseconds = "0" + current_milliseconds
+                }
+                if(current_milliseconds < 1){
+                    current_milliseconds = "0" + current_milliseconds
+                }
+                if(current_date == 1){
+                    st_nd_rd_th = 'st'
+                }
+                if(current_date == 2){
+                    st_nd_rd_th = 'nd'
+                }
+                if(current_date == 3){
+                    st_nd_rd_th = 'rd'
+                }
+                if(current_date > 3){
+                    st_nd_rd_th = 'th'
+                }
+                if(current_date == 21){
+                    st_nd_rd_th = 'st'
+                }
+                if(current_date == 22){
+                    st_nd_rd_th = 'nd'
+                }
+                if(current_date == 23){
+                    st_nd_rd_th = 'rd'
+                }
+                if(current_date == 31){
+                    st_nd_rd_th = 'st'
+                }
+                if(current_hour > 12){
+                    current_hour = current_hour - 12
+                }
+                if(current_hour < 10){
+                    current_hour = "0" + current_hour
+                }
+
+                document.getElementById('time').textContent = `${current_hour}:${current_minutes}:${current_seconds} ${ampm}`
+                document.getElementById('date').textContent = `${DAYS[current_day]}, ${MONTHS[current_month]} ${current_date}${st_nd_rd_th}, ${current_year}`
+
+            }, 0.001)
+
+
+
+        </script>
+
+        <script>
+
+            OpenCounter = 0;
+
+            function OpenMenu(){
+                if(OpenCounter = 0){
+
+                    document.getElementById('menu').classList.remove("MenuClosed");
+                    document.getElementById('menu').classList.add("MenuOpened");
+                }
+                if(OpenCounter = 1){
+
+                    document.getElementById('menu').classList.remove = "MenuOpened";
+                    document.getElementById('menu').classList.add = "MenuClosed";
+
+                    OpenCounter = 0;
+                }
+            }
+
+        </script>
+
+        <style>
+
+
+
+        </style>
+
+    </body>
+</html>
